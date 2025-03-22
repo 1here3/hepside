@@ -91,70 +91,70 @@ void AudioPayloadThread(AUDIO_SEQUENCE_PARAMS pAudioSequences[AUDIO_NUM]) {
 
 void AudioSequence1(int nSamplesPerSec, int nSampleCount, PSHORT psSamples) {
 	for (INT t = 0; t < nSampleCount * 2; t++) {
-		BYTE bFreq = (BYTE)((((t & t >> 8) - (t >> 13 & t)) & ((t & t >> 8) - (t >> 13))) ^ (t >> 8 & t));
+		BYTE bFreq = (BYTE)(((t * (t& t >> 4) & t>>8)^(0.5*(t&t>>8)))+(t&t>>8&t>>4|t>>5));
 		((BYTE*)psSamples)[t] = bFreq;
 	}
 }
 
 void AudioSequence2(int nSamplesPerSec, int nSampleCount, PSHORT psSamples) {
 	for (INT t = 0; t < nSampleCount * 2; t++) {
-		BYTE bFreq = (BYTE)((t - (t >> 4 & t >> 8) & t >> 12) - 1);
+		BYTE bFreq = (BYTE)((t&t>>12)*(t>>14));
 		((BYTE*)psSamples)[t] = bFreq;
 	}
 }
 
 void AudioSequence3(int nSamplesPerSec, int nSampleCount, PSHORT psSamples) {
 	for (INT t = 0; t < nSampleCount * 2; t++) {
-		BYTE bFreq = (BYTE)(((t >> 8 & t >> 4) >> (t >> 16 & t >> 8)) * t);
+		BYTE bFreq = (BYTE)((t>>1)*(t>>3&t>>7));
 		((BYTE*)psSamples)[t] = bFreq;
 	}
 }
 
 void AudioSequence4(int nSamplesPerSec, int nSampleCount, PSHORT psSamples) {
 	for (INT t = 0; t < nSampleCount * 2; t++) {
-		BYTE bFreq = (BYTE)((t & (t >> 7 | t >> 8 | t >> 16) ^ t) * t);
+		BYTE bFreq = (BYTE)((t/2^t>>5)&t>>9);
 		((BYTE*)psSamples)[t] = bFreq;
 	}
 }
 
 void AudioSequence5(int nSamplesPerSec, int nSampleCount, PSHORT psSamples) {
 	for (INT t = 0; t < nSampleCount * 2; t++) {
-		BYTE bFreq = (BYTE)((t * t / (1 + (t >> 9 & t >> 8))) & 128);
+		BYTE bFreq = (BYTE)((t&t>>8)*t>>4);
 		((BYTE*)psSamples)[t] = bFreq;
 	}
 }
 
 void AudioSequence6(int nSamplesPerSec, int nSampleCount, PSHORT psSamples) {
 	for (INT t = 0; t < nSampleCount * 2; t++) {
-		BYTE bFreq = (BYTE)(t >> 5 | (t >> 2) * (t >> 5));
+		BYTE bFreq = (BYTE)((2*13/16*t>>3)*(t>>6)|t>>4);
 		((BYTE*)psSamples)[t] = bFreq;
 	}
 }
 
 void AudioSequence7(int nSamplesPerSec, int nSampleCount, PSHORT psSamples) {
 	for (INT t = 0; t < nSampleCount * 2; t++) {
-		BYTE bFreq = (BYTE)(100 * ((t << 2 | t >> 5 | t ^ 63) & (t << 10 | t >> 11)));
+		BYTE bFreq = (BYTE)(100*(t>>10|t>>11|t&t>>4));
 		((BYTE*)psSamples)[t] = bFreq;
 	}
 }
 
 void AudioSequence8(int nSamplesPerSec, int nSampleCount, PSHORT psSamples) {
 	for (INT t = 0; t < nSampleCount * 2; t++) {
-		BYTE bFreq = (BYTE)(t / 8 >> (t >> 9) * t / ((t >> 14 & 3) + 4));
+		BYTE bFreq = (BYTE)(t>>t/(4+(3&t>>14))*(1+(3&t>>12))*2);
 		((BYTE*)psSamples)[t] = bFreq;
 	}
 }
 
 void AudioSequence9(int nSamplesPerSec, int nSampleCount, PSHORT psSamples) {
 	for (INT t = 0; t < nSampleCount * 2; t++) {
-		BYTE bFreq = (BYTE)(10 * (t & 5 * t | t >> 6 | (t & 32768 ? -6 * t / 7 : (t & 65536 ? -9 * t & 100 : -9 * (t & 100)) / 11)));
+		BYTE bFreq = (BYTE)(((t>>4|t>>9|t>>10)*52)+(t>>5));
 		((BYTE*)psSamples)[t] = bFreq;
 	}
 }
 
 void AudioSequence10(int nSamplesPerSec, int nSampleCount, PSHORT psSamples) {
 	for (INT t = 0; t < nSampleCount * 2; t++) {
-		BYTE bFreq = (BYTE)(10 * (t >> 7 | 3 * t | t >> (t >> 15)) + (t >> 8 & 5));
+		BYTE bFreq = (BYTE)(10*(t>>7|t*3/2|t/2>>(t>>15)));
 		((BYTE*)psSamples)[t] = bFreq;
 	}
 }
