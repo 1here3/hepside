@@ -295,7 +295,7 @@ void Payload7(int t, HDC hdcScreen) {
 	SetBkColor(hdcScreen, RGB(random() % 256, random() % 256, random() % 256));
 	SetTextColor(hdcScreen, RGB(random() % 256, random() % 256, random() % 256));
 
-	TextOut(hdcScreen, random() % szScreen.cx, random() % szScreen.cy, L"HYDROGEN", 8);
+	TextOut(hdcScreen, random() % szScreen.cx, random() % szScreen.cy, L"HEPSIDE", 8);
 
 	AlphaBlend(hdcScreen, 0, 0, szScreen.cx, szScreen.cy, hcdc, 0, 0, szScreen.cx, szScreen.cy, blf);
 
@@ -332,7 +332,7 @@ void Payload8(int t, HDC hdcScreen) {
 	SetTextColor(hdcScreen, RGB(random() % 256, random() % 256, random() % 256));
 
 	for (int i = 0; i < 5; i++) {
-		TextOut(hdcScreen, random() % szScreen.cx, random() % szScreen.cy, L"ӉӬլҏ ӎӬ !!!", 11);
+		TextOut(hdcScreen, random() % szScreen.cx, random() % szScreen.cy, L"POOPY", 11);
 	}
 
 	AlphaBlend(hdcScreen, 0, 0, szScreen.cx, szScreen.cy, hcdc, 0, 0, szScreen.cx, szScreen.cy, blf);
